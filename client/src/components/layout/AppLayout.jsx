@@ -2,9 +2,20 @@ import React from "react";
 import Header from "./Header";
 import Title from "../shared/Title";
 import { Grid } from "@mui/material";
+import ChatList from "../specific/ChatList";
+import { SampleChats } from "../../constants/sampleData";
+import { useParams } from "react-router-dom";
 
 const AppLayout = () => (WrappedComponent) => {
+
+const handleDeleteChat=(e,_id,groupChat)=>{
+  e.preventDefault();
+  console.log("delete chat",_id,groupChat);
+}
+
   return (props) => {
+    const params = useParams();
+    const chatId = params.chatId;
     return (
       <>
         <Title />
@@ -19,7 +30,11 @@ const AppLayout = () => (WrappedComponent) => {
             }}
             height={"100%"}
           >
-            First
+            <ChatList
+              chats={SampleChats}
+              chatId={chatId}
+              handleDeleteChat={handleDeleteChat}
+            />
           </Grid>
 
           <Grid item xs={12} sm={8} md={5} lg={6} height={"100%"}>
