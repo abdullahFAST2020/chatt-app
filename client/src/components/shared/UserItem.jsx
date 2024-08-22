@@ -22,6 +22,7 @@ const UserItem = ({user, handler, handlerIsLoading}) => {
             WebkitLineClamp: 1,
             overflow: "hidden",
             textOverflow: "ellipsis",
+            width: "100%",
           }}
         >
           {name}
