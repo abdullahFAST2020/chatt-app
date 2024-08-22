@@ -5,13 +5,13 @@ import { Grid } from "@mui/material";
 import ChatList from "../specific/ChatList";
 import { SampleChats } from "../../constants/sampleData";
 import { useParams } from "react-router-dom";
+import Profile from "../specific/Profile";
 
 const AppLayout = () => (WrappedComponent) => {
-
-const handleDeleteChat=(e,_id,groupChat)=>{
-  e.preventDefault();
-  console.log("delete chat",_id,groupChat);
-}
+  const handleDeleteChat = (e, _id, groupChat) => {
+    e.preventDefault();
+    console.log("delete chat", _id, groupChat);
+  };
 
   return (props) => {
     const params = useParams();
@@ -52,7 +52,7 @@ const handleDeleteChat=(e,_id,groupChat)=>{
             }}
             height={"100%"}
           >
-            Third
+            <Profile />
           </Grid>
         </Grid>
       </>

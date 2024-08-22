@@ -22,3 +22,15 @@ export const SampleChats = [{
     members:["1","2"],
 },
 ];
+
+export const sampleUsers=[{
+        avatar:["https://www.w3schools.com/howto/img_avatar.png"],
+        name: "Irtaza",
+        _id: "2",
+    },
+    
+    {
+        avatar:["https://www.w3schools.com/howto/img_avatar.png","https://www.w3schools.com/howto/img_avatar.png","https://www.w3schools.com/howto/img_avatar.png"],
+        name: "Hassan",
+        _id: "3",
+}]
