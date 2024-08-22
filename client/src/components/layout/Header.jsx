@@ -8,7 +8,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { orange, neon, blue } from "../../constants/color";
+import { blue } from "../../constants/color";
 import {
   Menu as MenuIcon,
   Search as SearchIcon,
@@ -143,10 +143,10 @@ const Header = () => {
   );
 };
 
-const IconBtn = ({ title, icon, onclick }) => {
+const IconBtn = ({ title, icon, onClick }) => {
   return (
     <Tooltip title={title}>
-      <IconButton color="inherit" size="large" onClick={onclick}>
+      <IconButton color="inherit" size="large" onClick={onClick}>
         {icon}
       </IconButton>
     </Tooltip>
