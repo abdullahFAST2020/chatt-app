@@ -44,7 +44,7 @@ const NotificationItems = memo(({ sender, _id, handler }) => {
         spacing={"1rem"}
         width={"100%"}
       >
-        <Avatar />
+        <Avatar src={avatar}/>
         <Typography
           variant="body1"
           sx={{
