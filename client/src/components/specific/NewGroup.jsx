@@ -1,34 +1,66 @@
+import { useInputValidation } from "6pp"; // Ensure this import path is correct
 import {
-  Avatar,
   Button,
   Dialog,
   DialogTitle,
-  ListItem,
   Stack,
-  Typography,
+  TextField,
+  Typography
 } from "@mui/material";
-import React, { memo } from "react";
-import { sampleNotifications } from "../../constants/sampleData";
-
+import React, { useState } from "react";
+import { sampleUsers } from "../../constants/sampleData";
+import UserItem from "../shared/UserItem";
 
 const NewGroup = () => {
-  return <Dialog open>
-  <Stack p={{ xs: "1rem", sm: "2rem" }} maxWidth={"25rem"}>
-    <DialogTitle>New Group</DialogTitle>
-    {sampleNotifications.length > 0 ? (
-      sampleNotifications.map(({ sender, _id }) => (
-        <NotificationItems
-          sender={sender}
-          _id={_id}
-          handler={friendRequestHandler}
-          key={_id}
-        />
-      ))
-    ) : (
-      <Typography textAlign={"center"}>0 Notifications</Typography>
-    )}
-  </Stack>
-</Dialog>
-}
+  const groupName = useInputValidation("");
+  const [members, setMembers] = useState(sampleUsers);
+  const [selectedMembers, setSelectedMembers] = useState([]);
+  const submitHandler = () => {};
+  const closeHandler = () => {};
 
-export default NewGroup
+  const selectMemberHandler = (id) => {
+    setSelectedMembers((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+    );
+  };
+
+  return (
+    <Dialog open onClose={closeHandler}>
+      <Stack p={{ xs: "1rem", sm: "3rem" }} width={"25rem"} spacing={"2rem"}>
+        <DialogTitle textAlign={"center"} variant="h4">
+          New Group
+        </DialogTitle>
+
+        <TextField
+          label="Group Name"
+          value={groupName.value}
+          onChange={groupName.changeHandler}
+        />
+        <Typography variant="body1">Members</Typography>
+        <Stack>
+          {members.map((user) => (
+            <UserItem
+              user={user}
+              key={user._id}
+              handler={selectMemberHandler}
+              isAdded={selectedMembers.includes(user._id)} // Changed i to user
+            />
+          ))}
+        </Stack>
+
+        <Stack direction={"row"} justifyContent={"space-evenly"}>
+          <Button variant="outlined" color="error" size="large">
+            Cancel
+          </Button>
+          <Button variant="contained" size="large" onClick={submitHandler}>
+            {" "}
+            {/* Fixed onClick */}
+            Create
+          </Button>
+        </Stack>
+      </Stack>
+    </Dialog>
+  );
+};
+
+export default NewGroup;
