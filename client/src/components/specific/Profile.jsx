@@ -33,7 +33,7 @@ const Profile = () => {
       />
       <ProfileCard
         heading={"Joined"}
-        text={moment('2024-07-15T00:00:02.012Z').fromNow()}
+        text={moment('2024-09-19T00:00:01.996Z').fromNow()}
         Icon={CalendarIcon}
       />
     </Stack>

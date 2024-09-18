@@ -1,10 +1,10 @@
 import React from "react";
 import { Menu } from "@mui/material";
 
-const FileMenu = ({ anchorE1 }) => {
+const FileMenu = ({ anchorEl, open, onClose }) => {
   return (
-    <Menu anchorEl={anchorE1}>
-      <div style={{ width: "10rem" }}></div>
+    <Menu anchorEl={anchorEl} open={false} onClose={onClose}>
+      <div style={{ width: "10rem" }}>File Options</div>
     </Menu>
   );
 };
